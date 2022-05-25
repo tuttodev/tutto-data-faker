@@ -1,0 +1,7 @@
+type Query {
+  user: [User]
+}
+
+type Mutation {
+  createUser(user: UserCreateInput!): User!
+}
