@@ -1,8 +1,7 @@
-import { v4 as uuidv4 } from 'uuid'
 import { NextFunction, Request, Response } from 'express'
-import { User } from 'domain/entities/User'
 import { DynamoDBUserRepository } from '../../../../implementations/Aws/dynamo-db/DynamoDBUserRepository'
 import { UserCreatorUseCase } from '../../../../../application/usecases/UserCreator'
+import { UuidV4Generator } from '@infrastructure/UuidV4Generator'
 
 export const createUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const {
@@ -12,10 +11,10 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
   } = req.body
 
   const dynamoDBUserRepo = new DynamoDBUserRepository()
-  const userCreatorUseCase = new UserCreatorUseCase(dynamoDBUserRepo)
+  const uuidV4Generator = new UuidV4Generator()
+  const userCreatorUseCase = new UserCreatorUseCase(dynamoDBUserRepo, uuidV4Generator)
 
-  const userToCreate: User = {
-    id: uuidv4(),
+  const userToCreate = {
     name,
     username,
     age

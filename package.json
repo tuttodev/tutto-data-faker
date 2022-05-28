@@ -6,15 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-console-app": "nodemon ./src/infrastructure/driving-adapters/console/console.ts",
-    "start-rest-app": "nodemon ./src/infrastructure/driving-adapters/api-rest/start.ts"
+    "start-rest-app": "nodemon ./src/infrastructure/driving-adapters/api-rest/start.ts",
+    "start-app": "nodemon ./src/infrastructure/driving-adapters/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@graphql-tools/schema": "^8.3.13",
+    "apollo-server-express": "^3.8.1",
     "aws-sdk": "^2.1066.0",
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
+    "graphql": "^16.5.0",
+    "module-alias": "^2.2.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -26,5 +31,10 @@
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5"
+  },
+  "_moduleAliases": {
+    "@infrastructure": "src/infrastructure",
+    "@application": "src/application",
+    "@domain": "src/domain"
   }
 }
