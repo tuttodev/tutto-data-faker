@@ -6,22 +6,21 @@ import { DynamoDBUserRepository } from '../../implementations/Aws/dynamo-db/Dyna
 import { UserGetterUseCase } from '../../../application/usecases/UserGetter'
 import { UserUpdaterUseCase } from '../../../application/usecases/UserUpdater'
 import { UserDeleterUseCase } from '../../../application/usecases/UserDeleter'
+import { UuidV4Generator } from '@infrastructure/UuidV4Generator'
 (async () => {
   dotenv.config({
     path: path.resolve(__dirname, '../../../../.env')
   })
   const dynamoDBUserRepo = new DynamoDBUserRepository()
+  const uuidV4Generator = new UuidV4Generator()
 
   // Creando usuarios
-  const userCreatorUseCase = new UserCreatorUseCase(dynamoDBUserRepo)
-  const userToCreate: User = {
+  const userCreatorUseCase = new UserCreatorUseCase(dynamoDBUserRepo, uuidV4Generator)
+  await userCreatorUseCase.run({
     name: 'Luciana',
     age: 12,
     username: 'luciana24',
-    id: '1'
-  }
-
-  await userCreatorUseCase.run(userToCreate)
+  })
 
   // Obteniendo usuarios
   const userGetterUseCase = new UserGetterUseCase(dynamoDBUserRepo)
