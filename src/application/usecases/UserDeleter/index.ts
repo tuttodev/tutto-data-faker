@@ -1,5 +1,5 @@
 
-import { User } from 'domain/entities/User'
+import { User } from '@domain/entities/user/User'
 import { UserRepository } from 'domain/repositories/UserRepository'
 import { UserGetterById } from '../../../domain/services/UserGetterById'
 

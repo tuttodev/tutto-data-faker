@@ -1,4 +1,4 @@
-import { User } from 'domain/entities/User'
+import { User } from '@domain/entities/user/User'
 import { UserRepository } from 'domain/repositories/UserRepository'
 import { DynamoDB } from '../../../driven-adapters/AWS/dynamo-db'
 
@@ -40,10 +40,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Item: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         },
         ENTITY_TYPE: {
           S: 'USER'
@@ -55,7 +55,7 @@ export class DynamoDBUserRepository implements UserRepository {
           S: user.name
         },
         age: {
-          N: `${user.age!}`
+          N: `${user.age}`
         }
       }
     }).promise()
@@ -118,7 +118,7 @@ export class DynamoDBUserRepository implements UserRepository {
           S: user.name
         },
         ':age': {
-          N: `${user.age!}`
+          N: `${user.age}`
         }
       }
     }).promise()

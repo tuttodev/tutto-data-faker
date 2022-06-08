@@ -1,4 +1,5 @@
-import { User } from '../../../domain/entities/User'
+import { User } from '../../../domain/entities/user/User'
+import { UserAge, UserId, UserName, UserUserName } from '../../../domain/entities/user/valueObjects'
 import { UserRepository } from '../../../domain/repositories/UserRepository'
 import { ExistUserByUserName } from '../../../domain/services/ExistUserByUserName'
 import { UserAlreadyExistsException } from '../../../domain/exceptions/UserAlreadyExistsException'
@@ -22,14 +23,14 @@ export class UserCreatorUseCase {
   }
 
   async run (params: UserInput): Promise<User> {
-    const user: User = {
-      id: this._uuidGenerator.generate(),
-      age: params.age,
-      name: params.name,
-      username: params.username
-    }
+    const user = new User({
+      id: new UserId(this._uuidGenerator.generate()),
+      name: new UserName(params.name),
+      username: new UserUserName(params.username),
+      age: new UserAge(params.age)
+    })
 
-    const existUser: boolean = await this._existUserByUserName.run(user.username!)
+    const existUser: boolean = await this._existUserByUserName.run(user.username._value)
 
     if (existUser) throw new UserAlreadyExistsException()
 
