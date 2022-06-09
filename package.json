@@ -19,6 +19,7 @@
     "express": "^4.17.2",
     "graphql": "^16.5.0",
     "module-alias": "^2.2.2",
+    "mongoose": "^6.3.6",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

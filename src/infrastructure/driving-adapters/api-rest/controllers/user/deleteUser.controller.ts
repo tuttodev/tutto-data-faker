@@ -1,12 +1,12 @@
 import { NextFunction, Request, Response } from 'express'
 import { UserDeleterUseCase } from '../../../../../application/usecases/UserDeleter'
-import { DynamoDBUserRepository } from '../../../../implementations/Aws/dynamo-db/DynamoDBUserRepository'
+import { MongoDBUserRepository } from '../../../../implementations/MongoDB/MongoDBUserRepository'
 
 export const deleteUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const userId = req.params.id
 
-  const dynamoDBUserRepo = new DynamoDBUserRepository()
-  const userDeleterUseCase = new UserDeleterUseCase(dynamoDBUserRepo)
+  const mongoDBRepository = new MongoDBUserRepository()
+  const userDeleterUseCase = new UserDeleterUseCase(mongoDBRepository)
 
   try {
     const userDeleted = await userDeleterUseCase.run(userId)

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express'
-import { DynamoDBUserRepository } from '../../../../implementations/Aws/dynamo-db/DynamoDBUserRepository'
+import { MongoDBUserRepository } from '../../../../implementations/MongoDB/MongoDBUserRepository'
 import { UserUpdaterUseCase } from '../../../../../application/usecases/UserUpdater'
 import { User } from 'domain/entities/User'
 
@@ -12,8 +12,8 @@ export const updateUser = async (req: Request, res: Response, next: NextFunction
 
   const userId = req.params.userId
 
-  const dynamoDBUserRepo = new DynamoDBUserRepository()
-  const userUpdaterUseCase = new UserUpdaterUseCase(dynamoDBUserRepo)
+  const mongoDBRepository = new MongoDBUserRepository()
+  const userUpdaterUseCase = new UserUpdaterUseCase(mongoDBRepository)
 
   try {
     const userToUpdate: User = {
