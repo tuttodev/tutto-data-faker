@@ -4,7 +4,7 @@ export class User {
   readonly id: UserId
   readonly name: UserName
   readonly username: UserUserName
-  readonly _age?: UserAge
+  readonly age?: UserAge
 
   constructor ({
     id,
@@ -15,6 +15,6 @@ export class User {
     this.id = id
     this.name = name
     this.username = username
-    this._age = age
+    this.age = age
   }
 }

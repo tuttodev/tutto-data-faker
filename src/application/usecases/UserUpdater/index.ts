@@ -1,3 +1,4 @@
+import { UserAge, UserId, UserName, UserUserName } from '@domain/entities/user/valueObjects'
 import { User } from '../../../domain/entities/user/User'
 import { UserRepository } from '../../../domain/repositories/UserRepository'
 import { UserGetterById } from '../../../domain/services/UserGetterById'
@@ -22,10 +23,10 @@ export class UserUpdaterUseCase {
     const user = await this._userGetterById.run(data.id)
 
     const dataToUpdate: User = {
-      age: data.age ?? user.age, // Nullish Coalescing Operator
-      name: data.name ?? user.name,
-      id: data.id,
-      username: data.username ?? user.username
+      age: new UserAge(data.age) ?? new UserAge(user.age?._value), // Nullish Coalescing Operator
+      name: new UserName(data.name) ?? new UserName(user.name._value),
+      id: new UserId(data.id),
+      username: new UserUserName(data.username) ?? new UserUserName(user.username._value)
     }
 
     const userUpdated: User = await this._userResposiory.update(dataToUpdate)
