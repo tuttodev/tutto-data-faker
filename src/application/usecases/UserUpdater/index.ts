@@ -22,12 +22,12 @@ export class UserUpdaterUseCase {
   async run (data: UserInput): Promise<User> {
     const user = await this._userGetterById.run(data.id)
 
-    const dataToUpdate: User = {
-      age: new UserAge(data.age) ?? new UserAge(user.age?._value), // Nullish Coalescing Operator
-      name: new UserName(data.name) ?? new UserName(user.name._value),
-      id: new UserId(data.id),
-      username: new UserUserName(data.username) ?? new UserUserName(user.username._value)
-    }
+    const dataToUpdate = User.create(
+      new UserId(data.id),
+      new UserName(data.name ?? user.name._value),
+      new UserUserName(data.username ?? user.username._value),
+      new UserAge(data.age ?? user.age?._value)
+    )
 
     const userUpdated: User = await this._userResposiory.update(dataToUpdate)
     return userUpdated

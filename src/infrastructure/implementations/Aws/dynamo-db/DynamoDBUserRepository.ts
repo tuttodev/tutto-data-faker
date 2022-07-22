@@ -1,5 +1,5 @@
 import { User } from '@domain/entities/user/User'
-import { UserAge, UserId, UserName, UserUserName } from '@domain/entities/user/valueObjects'
+import { Nullable } from '@domain/Nullable'
 import { UserRepository } from 'domain/repositories/UserRepository'
 import { DynamoDB } from '../../../driven-adapters/AWS/dynamo-db'
 
@@ -25,12 +25,12 @@ export class DynamoDBUserRepository implements UserRepository {
       const name: string = item.name.S ?? ''
       const username: string = item.username.S ?? ''
 
-      return {
-        age: new UserAge(Number(age)),
-        id: new UserId(id.split('_')[1]),
-        name: new UserName(name),
-        username: new UserUserName(username)
-      }
+      return User.fromPrimitives({
+        id: id.split('_')[1],
+        name,
+        username,
+        age: Number(age)
+      })
     })
 
     return users
@@ -64,7 +64,7 @@ export class DynamoDBUserRepository implements UserRepository {
     return user
   }
 
-  async getByUserName (username: string): Promise<User | null> {
+  async getByUserName (username: string): Promise<Nullable<User>> {
     const response = await this._db.scan({
       TableName: DynamoDB.TABLE_NAME,
       FilterExpression: 'username = :username',
@@ -84,14 +84,12 @@ export class DynamoDBUserRepository implements UserRepository {
     const name: string = item.name.S ?? ''
     const usernameItem: string = item.username.S ?? ''
 
-    const user: User = {
-      age: new UserAge(Number(age)),
-      id: new UserId(id.split('_')[1]),
-      name: new UserName(name),
-      username: new UserUserName(usernameItem)
-    }
-
-    return user
+    return User.fromPrimitives({
+      id: id.split('_')[1],
+      name,
+      username: usernameItem,
+      age: Number(age)
+    })
   }
 
   async update (user: User): Promise<User> {
@@ -141,7 +139,7 @@ export class DynamoDBUserRepository implements UserRepository {
     }).promise()
   }
 
-  async getById (id: string): Promise<User | null> {
+  async getById (id: string): Promise<Nullable<User>> {
     const response = await this._db.scan({
       TableName: DynamoDB.TABLE_NAME,
       FilterExpression: '#pk = :pk',
@@ -164,13 +162,11 @@ export class DynamoDBUserRepository implements UserRepository {
     const name: string = item.name.S ?? ''
     const usernameItem: string = item.username.S ?? ''
 
-    const user: User = {
-      age: new UserAge(Number(age)),
-      id: new UserId(idItem.split('_')[1]),
-      name: new UserName(name),
-      username: new UserUserName(usernameItem)
-    }
-
-    return user
+    return User.fromPrimitives({
+      id: idItem.split('_')[1],
+      name,
+      username: usernameItem,
+      age: Number(age)
+    })
   }
 }

@@ -4,6 +4,7 @@ import { UserRepository } from '../../../domain/repositories/UserRepository'
 import { ExistUserByUserName } from '../../../domain/services/ExistUserByUserName'
 import { UserAlreadyExistsException } from '../../../domain/exceptions/UserAlreadyExistsException'
 import { UuidGenerator } from '@domain/utils/uuidGenerator'
+import { UserIsNotAnAdultException } from '@domain/exceptions/UserIsNotAnAdultException'
 
 interface UserInput {
   name: string
@@ -33,6 +34,9 @@ export class UserCreatorUseCase {
     const existUser: boolean = await this._existUserByUserName.run(user.username._value)
 
     if (existUser) throw new UserAlreadyExistsException()
+
+    const isAnAdult = user.isAdult()!
+    if (!isAnAdult) throw new UserIsNotAnAdultException()
 
     const userCreated: User = await this._userResposiory.save(user)
 

@@ -6,3 +6,10 @@ export class InvalidUserAge extends Exception {
     this.spanishMessage = 'Edad del usuario invalida'
   }
 }
+
+export class AgeNotProvided extends Exception {
+  constructor () {
+    super('Age not provided')
+    this.spanishMessage = 'Edad no suministrada'
+  }
+}
