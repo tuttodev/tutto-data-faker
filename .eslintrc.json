@@ -8,7 +8,8 @@
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-extraneous-class": "off",
     "@typescript-eslint/no-misused-promises": "off",
-    "@typescript-eslint/no-useless-constructor": "off"
+    "@typescript-eslint/no-useless-constructor": "off",
+    "@typescript-eslint/restrict-template-expressions": "off"
   },
   "ignorePatterns": [
     "dist",

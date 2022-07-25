@@ -1,4 +1,5 @@
-import { User } from 'domain/entities/User'
+import { User } from '@domain/entities/user/User'
+import { Nullable } from '@domain/Nullable'
 import { UserRepository } from 'domain/repositories/UserRepository'
 import { DynamoDB } from '../../../driven-adapters/AWS/dynamo-db'
 
@@ -24,12 +25,12 @@ export class DynamoDBUserRepository implements UserRepository {
       const name: string = item.name.S ?? ''
       const username: string = item.username.S ?? ''
 
-      return {
-        age: Number(age),
+      return User.fromPrimitives({
         id: id.split('_')[1],
         name,
-        username
-      }
+        username,
+        age: Number(age)
+      })
     })
 
     return users
@@ -40,22 +41,22 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Item: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         },
         ENTITY_TYPE: {
           S: 'USER'
         },
         username: {
-          S: user.username
+          S: user.username._value
         },
         name: {
-          S: user.name
+          S: user.name._value
         },
         age: {
-          N: `${user.age!}`
+          N: `${user.age?._value ?? ''}`
         }
       }
     }).promise()
@@ -63,7 +64,7 @@ export class DynamoDBUserRepository implements UserRepository {
     return user
   }
 
-  async getByUserName (username: string): Promise<User | null> {
+  async getByUserName (username: string): Promise<Nullable<User>> {
     const response = await this._db.scan({
       TableName: DynamoDB.TABLE_NAME,
       FilterExpression: 'username = :username',
@@ -83,14 +84,12 @@ export class DynamoDBUserRepository implements UserRepository {
     const name: string = item.name.S ?? ''
     const usernameItem: string = item.username.S ?? ''
 
-    const user: User = {
-      age: Number(age),
+    return User.fromPrimitives({
       id: id.split('_')[1],
       name,
-      username: usernameItem
-    }
-
-    return user
+      username: usernameItem,
+      age: Number(age)
+    })
   }
 
   async update (user: User): Promise<User> {
@@ -98,10 +97,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Key: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         }
       },
       UpdateExpression: 'set #username = :username, #name = :name, #age = :age',
@@ -112,13 +111,13 @@ export class DynamoDBUserRepository implements UserRepository {
       },
       ExpressionAttributeValues: {
         ':username': {
-          S: user.username
+          S: user.username._value
         },
         ':name': {
-          S: user.name
+          S: user.name._value
         },
         ':age': {
-          N: `${user.age!}`
+          N: `${user.age?._value ?? ''}`
         }
       }
     }).promise()
@@ -131,16 +130,16 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Key: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id}`
+          S: `USER_${user.id._value}`
         }
       }
     }).promise()
   }
 
-  async getById (id: string): Promise<User | null> {
+  async getById (id: string): Promise<Nullable<User>> {
     const response = await this._db.scan({
       TableName: DynamoDB.TABLE_NAME,
       FilterExpression: '#pk = :pk',
@@ -163,13 +162,11 @@ export class DynamoDBUserRepository implements UserRepository {
     const name: string = item.name.S ?? ''
     const usernameItem: string = item.username.S ?? ''
 
-    const user: User = {
-      age: Number(age),
+    return User.fromPrimitives({
       id: idItem.split('_')[1],
       name,
-      username: usernameItem
-    }
-
-    return user
+      username: usernameItem,
+      age: Number(age)
+    })
   }
 }
