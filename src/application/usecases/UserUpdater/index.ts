@@ -11,11 +11,11 @@ interface UserInput {
 }
 
 export class UserUpdaterUseCase {
-  private readonly _userResposiory: UserRepository
+  private readonly _userRepository: UserRepository
   private readonly _userGetterById: UserGetterById
 
   constructor (userRepository: UserRepository) {
-    this._userResposiory = userRepository
+    this._userRepository = userRepository
     this._userGetterById = new UserGetterById(userRepository)
   }
 
@@ -29,7 +29,7 @@ export class UserUpdaterUseCase {
       new UserAge(data.age ?? user.age?._value)
     )
 
-    const userUpdated: User = await this._userResposiory.update(dataToUpdate)
+    const userUpdated: User = await this._userRepository.update(dataToUpdate)
     return userUpdated
   }
 }

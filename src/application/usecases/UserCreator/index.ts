@@ -12,12 +12,12 @@ interface UserInput {
 }
 
 export class UserCreatorUseCase {
-  private readonly _userResposiory: UserRepository
+  private readonly _userRepository: UserRepository
   private readonly _existUserByUserName: ExistUserByUserName
   private readonly _uuidGenerator: UuidGenerator
 
   constructor (userRepository: UserRepository, uuidGenerator: UuidGenerator) {
-    this._userResposiory = userRepository
+    this._userRepository = userRepository
     this._uuidGenerator = uuidGenerator
     this._existUserByUserName = new ExistUserByUserName(userRepository)
   }
@@ -37,7 +37,7 @@ export class UserCreatorUseCase {
     const isAnAdult = user.isAdult()
     if (!isAnAdult) throw new UserIsNotAnAdultException()
 
-    const userCreated: User = await this._userResposiory.save(user)
+    const userCreated: User = await this._userRepository.save(user)
 
     return userCreated
   }

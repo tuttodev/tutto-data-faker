@@ -2,14 +2,14 @@ import { User } from 'domain/entities/user/User'
 import { UserRepository } from 'domain/repositories/UserRepository'
 
 export class UserGetterUseCase {
-  private readonly _userResposiory: UserRepository
+  private readonly _userRepository: UserRepository
 
   constructor (userRepository: UserRepository) {
-    this._userResposiory = userRepository
+    this._userRepository = userRepository
   }
 
   async run (): Promise<User[]> {
-    const users: User[] = await this._userResposiory.getAll()
+    const users: User[] = await this._userRepository.getAll()
     return users
   }
 }
