@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start-console-app": "nodemon ./src/infrastructure/driving-adapters/console/console.ts",
-    "start-rest-app": "nodemon ./src/infrastructure/driving-adapters/api-rest/start.ts",
+    "start-rest-app": "nodemon ./src/modules/infrastructure/driving-adapters/api-rest/start.ts",
     "start-app": "nodemon ./src/infrastructure/driving-adapters/start.ts"
   },
   "keywords": [],
@@ -19,13 +18,15 @@
     "express": "^4.17.2",
     "graphql": "^16.5.0",
     "module-alias": "^2.2.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "uuid-validate": "^0.0.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/graphql": "^14.5.0",
     "@types/node": "^17.0.13",
     "@types/uuid": "^8.3.4",
+    "@types/uuid-validate": "^0.0.1",
     "eslint": "^7.32.0",
     "eslint-config-standard-with-typescript": "^21.0.1",
     "nodemon": "^2.0.15",
@@ -35,6 +36,7 @@
   "_moduleAliases": {
     "@infrastructure": "src/infrastructure",
     "@application": "src/application",
-    "@domain": "src/domain"
+    "@domain": "src/domain",
+    "@shared": "src/Shared"
   }
 }

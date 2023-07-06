@@ -1,0 +1,28 @@
+<mxfile host="Electron" modified="2023-07-05T10:16:28.274Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.5.1 Chrome/112.0.5615.204 Electron/24.6.0 Safari/537.36" etag="Uf3cmXGPC8JZ-a6oUkzN" version="21.5.1" type="device">
+  <diagram name="Page-1" id="YTMrHADsfAQvFLuzUe6x">
+    <mxGraphModel dx="2045" dy="703" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="zgvlmqz6K5kZz_bLhWFG-6" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="-30" y="210" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zgvlmqz6K5kZz_bLhWFG-4" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;User&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;name&lt;br&gt;username&lt;br&gt;age&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="zgvlmqz6K5kZz_bLhWFG-6">
+          <mxGeometry width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="zgvlmqz6K5kZz_bLhWFG-5" value="AG" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zgvlmqz6K5kZz_bLhWFG-6">
+          <mxGeometry x="150" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zgvlmqz6K5kZz_bLhWFG-7" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="320" y="210" width="180" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="zgvlmqz6K5kZz_bLhWFG-8" value="&lt;div style=&quot;box-sizing:border-box;width:100%;background:#e4e4e4;padding:2px;&quot;&gt;UserImage&lt;/div&gt;&lt;table style=&quot;width:100%;font-size:1em;&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;PK&lt;/td&gt;&lt;td&gt;id&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;td&gt;url&lt;br&gt;userId&lt;br&gt;isProfile&lt;br&gt;generateUrlName()&lt;br&gt;isProfileImage()&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" vertex="1" parent="zgvlmqz6K5kZz_bLhWFG-7">
+          <mxGeometry width="180" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="zgvlmqz6K5kZz_bLhWFG-9" value="AG" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="zgvlmqz6K5kZz_bLhWFG-7">
+          <mxGeometry x="150" width="30" height="48" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
