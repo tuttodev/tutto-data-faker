@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5433:5432'
+    volumes: 
+      - tutto-data-faker-postgres:/var/lib/postgresql/data
+
+volumes:
+  tutto-data-faker-postgres:
+    driver: local

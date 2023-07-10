@@ -1,5 +1,5 @@
 {
-  "extends": "standard-with-typescript",
+  "extends": ["standard-with-typescript"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -9,7 +9,9 @@
     "@typescript-eslint/no-extraneous-class": "off",
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-useless-constructor": "off",
-    "@typescript-eslint/restrict-template-expressions": "off"
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/no-base-to-string": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off"
   },
   "ignorePatterns": [
     "dist",
