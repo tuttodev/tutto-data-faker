@@ -41,10 +41,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Item: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         ENTITY_TYPE: {
           S: 'USER'
@@ -97,10 +97,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Key: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         }
       },
       UpdateExpression: 'set #username = :username, #name = :name, #age = :age',
@@ -130,10 +130,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Key: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         }
       }
     }).promise()

@@ -50,7 +50,7 @@ export class User extends EntityRoot<User, PrimitiveData> {
 
   toPrimitives (): PrimitiveData {
     return {
-      id: this.id._value,
+      id: this.id.value,
       name: this.name._value,
       username: this.username._value,
       age: this.age?._value

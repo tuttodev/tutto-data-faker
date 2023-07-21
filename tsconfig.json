@@ -1,4 +1,7 @@
 {
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
@@ -14,7 +17,8 @@
     "paths": {
       "@infrastructure/*": ["./infrastructure/*"],
       "@application/*": ["application/*"],
-      "@domain/*": ["domain/*"]
+      "@domain/*": ["domain/*"],
+      "@shared/*": ["shared/*"]
     }
   }
 }

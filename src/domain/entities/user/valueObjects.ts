@@ -1,11 +1,7 @@
-import { Uuid } from '@domain/valueObjects/Uuid'
+import { Uuid } from '@shared/domain/value-object/Uuid'
 import { InvalidUserAge } from './exceptions'
 
-export class UserId extends Uuid {
-  constructor (value: string) {
-    super(value)
-  }
-}
+export class UserId extends Uuid {}
 
 export class UserName {
   readonly _value: string
