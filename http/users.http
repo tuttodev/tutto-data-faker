@@ -1,0 +1,27 @@
+GET http://localhost:2426/users
+
+###
+
+POST http://localhost:2426/users
+Content-Type: application/json
+
+{
+    "username": "patata",
+    "name": "Alexis",
+    "age": 22
+}
+
+###
+
+PUT http://localhost:2426/users/ac1b007b-88a1-43f1-b41c-1a1b0aac85f5
+Content-Type: application/json
+
+{
+    "username": "tutodev",
+    "name": "Juan Sebastián"
+}
+
+###
+
+DELETE http://localhost:2426/users/0b8d0ff5-cd72-47e6-a06b-a3c9955d9995
+Content-Type: application/json
