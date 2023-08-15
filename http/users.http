@@ -25,3 +25,24 @@ Content-Type: application/json
 
 DELETE http://localhost:2426/users/0b8d0ff5-cd72-47e6-a06b-a3c9955d9995
 Content-Type: application/json
+
+###
+// Upload User Image
+
+POST http://localhost:2426/users-image
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="userId"
+
+ac1b007b-88a1-43f1-b41c-1a1b0aac85f5
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="isProfile"
+
+false
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="image"; filename="1.png"
+Content-Type: image/png
+
+./test-image.png
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
