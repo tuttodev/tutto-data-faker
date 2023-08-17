@@ -2,7 +2,7 @@ import { EntityRoot } from '../../User/domain/entities/EntityRoot'
 import { UserImageIsProfile } from './UserImageIsProfile'
 import { UserImageUrl } from './UserImageUrl'
 import { UserId } from '../user/UserId'
-import { AggregateRoot } from '@shared/domain/AggregateRoot'
+import { AggregateRoot } from '@moduleShared/domain/AggregateRoot'
 
 interface PrimitiveData {
   url: string

@@ -12,10 +12,8 @@
     "skipLibCheck": true,
     "strictPropertyInitialization": false,
     "paths": {
-      "@infrastructure/*": ["./infrastructure/*"],
-      "@application/*": ["application/*"],
-      "@domain/*": ["domain/*"],
-      "@shared/*": ["Shared/*"]
+      "@moduleShared/*": ["Shared/*"],
+      "@modules/*": ["modules/*"]
     }
   }
 }

@@ -1,3 +1,12 @@
+import { UserRepository } from '../../../domain/UserRepository'
+import { ExistUserByUserName } from '../../../domain/services/ExistUserByUserName'
+import { UuidGenerator } from '@moduleShared/domain/uuidGenerator'
+import { User } from '../../../domain/User'
+import { UserId } from '../../../domain/UserId'
+import { UserName } from '../../../domain/UserName'
+import { UserUserName } from '../../../domain/UserUserName'
+import { UserAge } from '../../../domain/UserAge'
+
 
 interface UserInput {
   name: string
@@ -24,12 +33,12 @@ export class UserCreatorUseCase {
       age: new UserAge(params.age)
     })
 
-    const existUser: boolean = await this._existUserByUserName.run(user.username._value)
+    const existUser: boolean = await this._existUserByUserName.run(user.username.value)
 
-    if (existUser) throw new UserAlreadyExistsException()
+    if (existUser) throw new Error('User already exist')
 
     const isAnAdult = user.isAdult()
-    if (!isAnAdult) throw new UserIsNotAnAdultException()
+    if (!isAnAdult) throw new Error('User is not adult')
 
     const userCreated: User = await this._userRepository.save(user)
 

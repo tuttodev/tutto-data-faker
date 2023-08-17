@@ -1,9 +1,9 @@
-import { AggregateRoot } from '@shared/domain/AggregateRoot'
+import { AggregateRoot } from '@moduleShared/domain/AggregateRoot'
 import { UserId } from './UserId'
 import { UserName } from './UserName'
 import { UserUserName } from './UserUserName'
 import { UserAge } from './UserAge'
-import { InvalidArgumentError } from '@shared/domain/value-object/InvalidArgumentError'
+import { InvalidArgumentError } from '@moduleShared/domain/value-object/InvalidArgumentError'
 
 interface PrimitiveData {
   id: string

@@ -1,3 +1,3 @@
-import { BooleanValueObject } from '@shared/domain/value-object/BooleanValueObject'
+import { BooleanValueObject } from '@moduleShared/domain/value-object/BooleanValueObject'
 
 export class UserImageIsProfile extends BooleanValueObject {}

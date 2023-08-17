@@ -1,5 +1,5 @@
 
-import { Nullable } from '@shared/domain/Nullable'
+import { Nullable } from '@moduleShared/domain/Nullable'
 import { User } from './User'
 
 export interface UserRepository {

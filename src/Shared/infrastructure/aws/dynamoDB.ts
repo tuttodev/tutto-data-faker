@@ -1,4 +1,4 @@
-import AWS from '../aws'
+import AWS from './aws'
 
 export class DynamoDB {
   static TABLE_NAME: string = 'tutto-data-faker'

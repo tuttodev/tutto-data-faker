@@ -1,5 +1,5 @@
-import { NumberValueObject } from '@shared/domain/value-object/IntValueObject'
-import { InvalidArgumentError } from '@shared/domain/value-object/InvalidArgumentError'
+import { NumberValueObject } from '@moduleShared/domain/value-object/IntValueObject'
+import { InvalidArgumentError } from '@moduleShared/domain/value-object/InvalidArgumentError'
 
 export class UserAge extends NumberValueObject {
   constructor (value: number) {

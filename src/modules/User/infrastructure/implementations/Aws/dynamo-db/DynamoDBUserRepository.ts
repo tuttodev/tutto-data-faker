@@ -1,7 +1,7 @@
-import { User } from '@domain/entities/user/User'
-import { Nullable } from '@domain/Nullable'
-import { UserRepository } from 'domain/repositories/UserRepository'
-import { DynamoDB } from '../../../driven-adapters/AWS/dynamo-db'
+import { User } from '../../../../domain/User'
+import { Nullable } from '@moduleShared/domain/Nullable'
+import { UserRepository } from '../../../../domain/UserRepository'
+import { DynamoDB } from '@moduleShared/infrastructure/aws/dynamoDB'
 
 export class DynamoDBUserRepository implements UserRepository {
   private readonly _db = DynamoDB.getInstance()
@@ -41,22 +41,22 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Item: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         ENTITY_TYPE: {
           S: 'USER'
         },
         username: {
-          S: user.username._value
+          S: user.username.value
         },
         name: {
-          S: user.name._value
+          S: user.name.value
         },
         age: {
-          N: `${user.age?._value ?? ''}`
+          N: `${user.age?.value ?? ''}`
         }
       }
     }).promise()
@@ -97,10 +97,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Key: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         }
       },
       UpdateExpression: 'set #username = :username, #name = :name, #age = :age',
@@ -111,13 +111,13 @@ export class DynamoDBUserRepository implements UserRepository {
       },
       ExpressionAttributeValues: {
         ':username': {
-          S: user.username._value
+          S: user.username.value
         },
         ':name': {
-          S: user.name._value
+          S: user.name.value
         },
         ':age': {
-          N: `${user.age?._value ?? ''}`
+          N: `${user.age?.value ?? ''}`
         }
       }
     }).promise()
@@ -130,10 +130,10 @@ export class DynamoDBUserRepository implements UserRepository {
       TableName: DynamoDB.TABLE_NAME,
       Key: {
         'TUTTO-DATA-FAKER_PK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         },
         'TUTTO-DATA-FAKER_SK': {
-          S: `USER_${user.id._value}`
+          S: `USER_${user.id.value}`
         }
       }
     }).promise()

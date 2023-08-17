@@ -1,6 +1,6 @@
 
-import { User } from 'domain/entities/user/User'
-import { UserRepository } from 'domain/repositories/UserRepository'
+import { User } from '../../../domain/User'
+import { UserRepository } from '../../../domain/UserRepository'
 import { UserGetterById } from '../../../domain/services/UserGetterById'
 
 export class UserDeleterUseCase {
