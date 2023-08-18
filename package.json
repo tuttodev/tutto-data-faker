@@ -43,7 +43,7 @@
     "typescript": "^4.5.5"
   },
   "_moduleAliases": {
-    "@moduleShared": "src/Shared",
+    "@moduleShared": "src/shared",
     "@modules": "src/modules"
   }
 }
