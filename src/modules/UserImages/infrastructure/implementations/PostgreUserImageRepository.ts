@@ -1,6 +1,6 @@
-import { UserImage } from '@domain/entities/user-image/UserImage'
-import { UserImageRepository } from '@domain/repositories/UserImageRepository'
-import { PostgresRepository } from '@shared/infrastructure/persistence/postgres/PostgresRepository'
+import { UserImage } from '../../domain/UserImage'
+import { UserImageRepository } from '../../domain/UserImageRepository'
+import { PostgresRepository } from '@moduleShared/infrastructure/persistence/postgres/PostgresRepository'
 import { QueryConfig } from 'pg'
 
 export class PostgreUserImageRepository extends PostgresRepository implements UserImageRepository {

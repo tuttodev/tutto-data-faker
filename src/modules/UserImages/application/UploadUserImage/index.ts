@@ -1,11 +1,11 @@
-import { UserImageId } from '@domain/entities/user-image/UserId'
-import { UserImage } from '@domain/entities/user-image/UserImage'
-import { UserImageFileExtension } from '@domain/entities/user-image/UserImageFileExtension'
-import { UserImageFileMimeType } from '@domain/entities/user-image/UserImageFileMimeType'
-import { UserImageIsProfile } from '@domain/entities/user-image/UserImageIsProfile'
-import { UserId } from '@domain/entities/user/valueObjects'
-import { UploadUserImageRepository } from '@domain/repositories/UploadUserImageRepository'
-import { UserImageRepository } from '@domain/repositories/UserImageRepository'
+import { UserImageId } from '../../domain/UserImageId'
+import { UserImage } from '../../domain/UserImage'
+import { UserImageFileExtension } from '../../domain/UserImageFileExtension'
+import { UserImageFileMimeType } from '../../domain/UserImageFileMimeType'
+import { UserImageIsProfile } from '../../domain/UserImageIsProfile'
+import { UserId } from '@moduleShared/domain/value-object/UserId'
+import { UploadUserImageRepository } from '../../domain/UploadUserImageRepository'
+import { UserImageRepository } from '../../domain/UserImageRepository'
 
 interface Input {
   id: string

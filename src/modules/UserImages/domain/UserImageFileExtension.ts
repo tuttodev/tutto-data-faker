@@ -1,4 +1,4 @@
-import { StringValueObject } from '@shared/domain/value-object/StringValueObject'
+import { StringValueObject } from '@moduleShared/domain/value-object/StringValueObject'
 
 export class UserImageFileExtension extends StringValueObject {
   constructor (value: string) {

@@ -1,58 +1,109 @@
-import { EntityRoot } from '../../User/domain/entities/EntityRoot'
-import { UserImageIsProfile } from './UserImageIsProfile'
-import { UserImageUrl } from './UserImageUrl'
-import { UserId } from '../user/UserId'
 import { AggregateRoot } from '@moduleShared/domain/AggregateRoot'
+import { UserImageIsProfile } from './UserImageIsProfile'
+import { UserId } from '@moduleShared/domain/value-object/UserId'
+import { UserImageId } from './UserImageId'
+import { UserImageFileName } from './UserImageFileName'
+import { UserImageFileExtension } from './UserImageFileExtension'
+import { UserImageFileMimeType } from './UserImageFileMimeType'
 
 interface PrimitiveData {
-  url: string
+  id: string
   userId: string
   isProfile: Boolean
+  fileName: string
+  fileExtension: string
+  fileMimeType: string
 }
 
 export class UserImage extends AggregateRoot {
-  readonly url: UserImageUrl
-  readonly isProfile: UserImageIsProfile
-  readonly userId: UserId
+  private readonly _id: UserImageId
+  private readonly _isProfile: UserImageIsProfile
+  private readonly _userId: UserId
+  private readonly _fileName: UserImageFileName
+  private readonly _fileExtension: UserImageFileExtension
+  private readonly _fileMimeType: UserImageFileMimeType
 
   constructor ({
-    url,
+    id,
     isProfile,
-    userId
-  }: { url: UserImageUrl, isProfile: UserImageIsProfile, userId: UserId }) {
+    userId,
+    fileExtension,
+    fileMimeType
+  }: { id: UserImageId, isProfile: UserImageIsProfile, userId: UserId, fileExtension: UserImageFileExtension, fileMimeType: UserImageFileMimeType }) {
     super()
-    this.url = url
-    this.isProfile = isProfile
-    this.userId = userId
+    this._id = id
+    this._isProfile = isProfile
+    this._userId = userId
+    this._fileExtension = fileExtension
+    this._fileMimeType = fileMimeType
+    this._fileName = new UserImageFileName(this.generateFileName())
   }
 
-  static create (data: { url: UserImageUrl, isProfile: UserImageIsProfile, userId: UserId }): UserImage {
+  get id (): string {
+    return this._id.value
+  }
+
+  get isProfile (): boolean {
+    return this._isProfile.value
+  }
+
+  get userId (): string {
+    return this._userId.value
+  }
+
+  get fileName (): string {
+    return this._fileName.value
+  }
+
+  get fileExtension (): string {
+    return this._fileExtension.value
+  }
+
+  get imageMimeType (): string {
+    return this._fileMimeType.value
+  }
+
+  static create (data: {
+    id: UserImageId
+    isProfile: UserImageIsProfile
+    userId: UserId
+    fileExtension: UserImageFileExtension
+    fileMimeType: UserImageFileMimeType }): UserImage {
     const user = new UserImage(data)
 
     return user
   }
 
-  static fromPrimitives (plainData: { url: string, isProfile: boolean, userId: string }): UserImage {
+  static fromPrimitives (plainData: { id: string, url: string, isProfile: boolean, userId: string, fileExtension: string, fileMimeType: string }): UserImage {
     return new UserImage({
-      url: new UserImageUrl(plainData.url),
+      id: new UserImageId(plainData.id),
       isProfile: new UserImageIsProfile(plainData.isProfile),
-      userId: new UserId(plainData.userId)
+      userId: new UserId(plainData.userId),
+      fileExtension: new UserImageFileExtension(plainData.fileExtension),
+      fileMimeType: new UserImageFileMimeType(plainData.fileMimeType)
     })
   }
 
   toPrimitives (): PrimitiveData {
     return {
-      url: this.url._value,
-      isProfile: this.isProfile._value,
-      userId: this.userId._value
+      id: this.id,
+      isProfile: this.isProfile,
+      userId: this.userId,
+      fileName: this.fileName,
+      fileExtension: this.fileExtension,
+      fileMimeType: this.imageMimeType
     }
   }
 
-  generateUrlName (): string {
-    return `${this.userId._value}.png`
+  generateFileName (): string {
+    return `${this.userId}_${this.id}`
+  }
+
+  generateFileNameWithExtension (): string {
+    return `${this.fileName}.${this.fileExtension}`
   }
 
   isProfileImage (): boolean {
-    return this.isProfile._value
+    return this.isProfile
   }
 }

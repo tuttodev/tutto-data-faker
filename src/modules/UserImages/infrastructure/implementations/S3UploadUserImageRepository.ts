@@ -1,6 +1,6 @@
-import { UserImage } from '@domain/entities/user-image/UserImage'
-import { UploadUserImageRepository } from '@domain/repositories/UploadUserImageRepository'
-import { S3Repository } from '@shared/infrastructure/persistence/aws/S3Repository'
+import { UserImage } from '../../domain/UserImage'
+import { UploadUserImageRepository } from '../../domain/UploadUserImageRepository'
+import { S3Repository } from '@moduleShared/infrastructure/aws/S3Repository'
 
 export class S3UploadUserImageRepository extends S3Repository implements UploadUserImageRepository {
   protected bucketSubFolders (): string {
