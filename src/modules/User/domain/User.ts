@@ -1,5 +1,5 @@
 import { AggregateRoot } from '@moduleShared/domain/AggregateRoot'
-import { UserId } from './UserId'
+import { UserId } from '@moduleShared/domain/value-object/UserId'
 import { UserName } from './UserName'
 import { UserUserName } from './UserUserName'
 import { UserAge } from './UserAge'

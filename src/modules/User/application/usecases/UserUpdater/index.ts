@@ -1,4 +1,4 @@
-import { UserId } from '../../../domain/UserId'
+import { UserId } from '@moduleShared/domain/value-object/UserId'
 import { UserName } from '../../../domain/UserName'
 import { UserUserName } from '../../../domain/UserUserName'
 import { UserAge } from '../../../domain/UserAge'
