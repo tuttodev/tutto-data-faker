@@ -1,12 +1,8 @@
-import path from 'path'
-import * as dotenv from 'dotenv'
+import 'dotenv/config'
 import { TuttoDataFakerBackendApp } from './TuttoDataFakerBackendApp'
 
 try {
-  dotenv.config({
-    path: path.resolve(__dirname, '../../../../.env')
-  })
-
+  console.log(process.env.AWS_ACCESS_KEY_ID)
   new TuttoDataFakerBackendApp().start()
 } catch (error) {
   console.log(error)
