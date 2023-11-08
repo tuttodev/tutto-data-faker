@@ -18,7 +18,8 @@
       "@infrastructure/*": ["./infrastructure/*"],
       "@application/*": ["application/*"],
       "@domain/*": ["domain/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@test/*": ["test/*"],
     }
   }
 }
