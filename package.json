@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-console-app": "nodemon ./src/infrastructure/driving-adapters/console/console.ts",
-    "start-rest-app": "nodemon ./src/infrastructure/driving-adapters/api-rest/start.ts",
+    "start-rest-app": "ts-node-dev -r tsconfig-paths/register ./src/infrastructure/driving-adapters/api-rest/start.ts",
     "start-app": "nodemon ./src/infrastructure/driving-adapters/start.ts"
   },
   "keywords": [],
@@ -21,6 +21,7 @@
     "module-alias": "^2.2.2",
     "multer": "1.4.5-lts.1",
     "pg": "^8.11.1",
+    "ts-node-dev": "^2.0.0",
     "uuid": "^8.3.2",
     "uuid-validate": "^0.0.3"
   },
