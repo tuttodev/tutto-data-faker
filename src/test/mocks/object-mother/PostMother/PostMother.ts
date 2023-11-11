@@ -27,15 +27,4 @@ export class PostMother {
       defaultParams.createdAt
     )
   }
-
-  static withMoreThanFiftyCharacters (): Post {
-    return this.create({
-      text: faker.string.alpha({
-        length: {
-          min: 51,
-          max: 100
-        }
-      })
-    })
-  }
 }
