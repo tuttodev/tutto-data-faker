@@ -15,6 +15,7 @@
   },
   "ignorePatterns": [
     "dist",
-    "src/**/*.js"
+    "src/**/*.js",
+    "jest.config.js"
   ]
 }
