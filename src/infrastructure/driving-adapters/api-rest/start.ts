@@ -1,3 +1,4 @@
+import 'module-alias/register'
 import 'dotenv/config'
 import { TuttoDataFakerBackendApp } from './TuttoDataFakerBackendApp'
 

@@ -1,6 +1,5 @@
 import path from 'path'
 import * as dotenv from 'dotenv'
-import { User } from '../../../domain/entities/User'
 import { UserCreatorUseCase } from '../../../application/usecases/UserCreator'
 import { DynamoDBUserRepository } from '../../implementations/Aws/dynamo-db/DynamoDBUserRepository'
 import { UserGetterUseCase } from '../../../application/usecases/UserGetter'
@@ -19,7 +18,7 @@ import { UuidV4Generator } from '@infrastructure/UuidV4Generator'
   await userCreatorUseCase.run({
     name: 'Luciana',
     age: 12,
-    username: 'luciana24',
+    username: 'luciana24'
   })
 
   // Obteniendo usuarios
@@ -32,7 +31,9 @@ import { UuidV4Generator } from '@infrastructure/UuidV4Generator'
 
   await userUpdaterUseCase.run({
     id: '1',
-    username: 'luci'
+    username: 'luci',
+    age: undefined,
+    name: undefined
   })
 
   const usersReturned2 = await userGetterUseCase.run()

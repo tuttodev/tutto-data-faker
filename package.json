@@ -6,13 +6,15 @@
   "scripts": {
     "start-console-app": "nodemon ./src/infrastructure/driving-adapters/console/console.ts",
     "start-rest-app": "ts-node-dev -r tsconfig-paths/register ./src/infrastructure/driving-adapters/api-rest/start.ts",
-    "start-app": "nodemon ./src/infrastructure/driving-adapters/start.ts"
+    "start-app": "nodemon ./src/infrastructure/driving-adapters/start.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.367.0",
+    "@graphql-tools/schema": "^10.0.2",
     "apollo-server-express": "^3.7.0",
     "aws-sdk": "^2.1066.0",
     "dotenv": "^14.3.2",
@@ -47,9 +49,9 @@
     "typescript": "^4.5.5"
   },
   "_moduleAliases": {
-    "@infrastructure": "src/infrastructure",
-    "@application": "src/application",
-    "@domain": "src/domain",
-    "@shared": "src/shared"
+    "@infrastructure": "dist/infrastructure",
+    "@application": "dist/application",
+    "@domain": "dist/domain",
+    "@shared": "dist/shared"
   }
 }

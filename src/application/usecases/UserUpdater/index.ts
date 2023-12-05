@@ -4,9 +4,9 @@ import { UserRepository } from '../../../domain/repositories/UserRepository'
 import { UserGetterById } from '../../../domain/services/UserGetterById'
 
 interface UserInput {
-  name: string
-  age: number
-  username: string
+  name?: string
+  age?: number
+  username?: string
   id: string
 }
 
