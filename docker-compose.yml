@@ -1,8 +1,27 @@
 version: '3.8'
 
 services:
+  tdf-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '2427:2426'
+    environment:
+      - AWS_ACCESS_KEY_ID=AKIAXZPERFKPVOA5SRUC
+      - AWS_SECRET_ACCESS_KEY=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
+      - AWS_DEFAULT_REGION=us-east-1
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PORT=5432
+      - AWS_BUCKET_NAME=tutto-data-faker
+      - GRAPHQL_PORT=
   postgres:
-    image: postgres:14.1-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
     restart: always
     environment:
       - POSTGRES_USER=postgres
@@ -10,9 +29,7 @@ services:
     ports:
       - '5433:5432'
     volumes:
-      - ./setup-postgresql.sql:/docker-entrypoint-initdb.d/setup-postgresql.sql
       - tutto-data-faker-postgres:/var/lib/postgresql/data
 
 volumes:
   tutto-data-faker-postgres:
-    driver: local

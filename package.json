@@ -7,7 +7,8 @@
     "start-console-app": "nodemon ./src/infrastructure/driving-adapters/console/console.ts",
     "start-rest-app": "ts-node-dev -r tsconfig-paths/register ./src/infrastructure/driving-adapters/api-rest/start.ts",
     "start-app": "nodemon ./src/infrastructure/driving-adapters/start.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/infrastructure/driving-adapters/api-rest/start.js"
   },
   "keywords": [],
   "author": "",
